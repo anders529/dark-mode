@@ -16,3 +16,4 @@ export const useLocalStorage = (DarkMode, setDarkMode, key) => {
     };
     return [storedValue, setValue];
 };
+export default useLocalStorage;
