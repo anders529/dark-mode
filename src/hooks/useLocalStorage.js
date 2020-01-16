@@ -1,16 +1,11 @@
 import {useState} from 'react';
 
-export const useLocalStorage = (DarkMode, setDarkMode, key) => {
+export const useLocalStorage = (setDarkMode, key, something) => {
     const [storedValue, setStoredValue] = useState(() => {
-        if (localStorage.getItem(key)) {
-            return JSON.parse(localStorage.getItem(key));
-        }
-        else {
-            localStorage.setItem(key, JSON.stringify(setDarkMode));
-            return setDarkMode;
-        }
+      const things = localStorage.getItem(key);
+      return things ? JSON.parse(things) : something;
     });
-    const setValue = newValue => {
+      const setValue = newValue => {
         setStoredValue(newValue);
         localStorage.setItem(key, JSON.stringify(setDarkMode));
     };
